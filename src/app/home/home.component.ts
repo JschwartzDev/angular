@@ -22,11 +22,12 @@ export class HomeComponent implements OnInit {
 
   fetchProducts() {
     this.productsService
-      .getProducts(`${environment.apiUrl}/products`, { page: 0, perPage: 5 })
+      .getProducts(`${environment.apiUrl}/products`)
       .subscribe((data: Products) => {
         this.products = data;
         this.numPages = this.products.length / 10;
         console.log(this.products);
+        console.log(this.numPages);
       });
   }
 }
