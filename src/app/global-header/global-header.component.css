@@ -1,0 +1,8 @@
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: lightslategray;
+  color: black;
+  min-height: 10vh;
+}

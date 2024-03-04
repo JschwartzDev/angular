@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <!--<div class="card">
+    <img
+      src="https://source.unsplash.com/random/200x200?sig=0"
+      alt="product image"
+      class="product-image"
+    /><span>price: </span><span>Rating: </span><button>More info</button>
+  </div>-->
+  <div class="card" *ngFor="let product of products; let i = index">
+    <img
+      src="{{ product.url }}"
+      alt="product image"
+      class="product-image"
+    /><span>price: {{ product.price }}</span
+    ><span>Rating: {{ product.rating }}</span
+    ><button>More info</button>
+  </div>
+</div>
