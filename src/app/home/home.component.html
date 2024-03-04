@@ -1,18 +1,8 @@
-<div class="wrapper">
-  <!--<div class="card">
-    <img
-      src="https://source.unsplash.com/random/200x200?sig=0"
-      alt="product image"
-      class="product-image"
-    /><span>price: </span><span>Rating: </span><button>More info</button>
-  </div>-->
-  <div class="card" *ngFor="let product of products; let i = index">
-    <img
-      src="{{ product.url }}"
-      alt="product image"
-      class="product-image"
-    /><span>Price: ${{ product.price }}</span
-    ><span>Rating: {{ product.rating }} out of 6</span
-    ><button>More info</button>
-  </div>
+<app-products [pageNum]="this.pageNum"></app-products>
+<div class="button-group-wrapper">
+  <button class="pagination-button" (click)="this.prevPage()">prev</button>
+  <button class="pagination-button">
+    {{ this.pageNum + 1 }}
+  </button>
+  <button class="pagination-button" (click)="this.nextPage()">next</button>
 </div>

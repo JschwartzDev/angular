@@ -1,33 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { environment } from '../environment';
-import { Products, Product } from '../../types';
+import { Products, Product, Options } from '../../types';
 import { ProductsService } from '../services/products.service';
+import { ProductsComponent } from '../products/products.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ProductsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit {
-  constructor(private productsService: ProductsService) {}
-  products: any = [];
-  numPages: number = 0;
+export class HomeComponent {
+  pageNum: number = 0;
 
-  ngOnInit(): void {
-    this.fetchProducts();
+  nextPage() {
+    this.pageNum++;
   }
 
-  fetchProducts() {
-    this.productsService
-      .getProducts(`${environment.apiUrl}/products`)
-      .subscribe((data: Products) => {
-        this.products = data;
-        this.numPages = this.products.length / 10;
-        console.log(this.products);
-        console.log(this.numPages);
-      });
+  prevPage() {
+    this.pageNum--;
   }
 }

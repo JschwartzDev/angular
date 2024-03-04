@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <div class="card" *ngFor="let product of products; let i = index">
+    <img
+      src="{{ product.url }}"
+      alt="product image"
+      class="product-image"
+    /><span>Price: ${{ product.price }}</span
+    ><span>Rating: {{ product.rating }} out of 6</span
+    ><button>More info</button>
+  </div>
+</div>

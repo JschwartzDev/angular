@@ -38,15 +38,3 @@
     cursor: pointer;
   }
 }
-
-.button-group-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #1b9aaa;
-  height: 5vh;
-}
-
-.pagination-button {
-  padding: 0px 10px;
-}
