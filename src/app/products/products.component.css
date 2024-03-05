@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   background-color: #1b9aaa;
   padding: 2rem;
+  min-height: 100vh;
 }
 
 .card {
