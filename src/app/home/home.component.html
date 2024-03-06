@@ -1,8 +1,17 @@
-<app-products [products]="this.products"></app-products>
+<app-products
+  [products]="this.products"
+  (deleteProductEmitter)="this.deleteProduct($event)"
+  (editProductEmitter)="this.editProduct($event)"
+  (createNewProductEmitter)="this.createProduct($event)"
+></app-products>
 <div class="button-group-wrapper">
-  <button class="pagination-button" (click)="this.prevPage()">prev</button>
+  <button class="pagination-button prev-btn" (click)="this.prevPage()">
+    prev
+  </button>
   <button class="pagination-button">
     {{ this.pageNum + 1 }}
   </button>
-  <button class="pagination-button" (click)="this.nextPage()">next</button>
+  <button class="pagination-button next-btn" (click)="this.nextPage()">
+    next
+  </button>
 </div>

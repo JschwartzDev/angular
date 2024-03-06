@@ -1,11 +1,87 @@
 <div class="wrapper">
+  <div
+    class="create-new-product-btn"
+    (click)="this.creatingNew = !this.creatingNew"
+  >
+    Add New Item
+  </div>
+  <div class="card" *ngIf="creatingNew">
+    <div class="create-new-product-header">Create a new product!</div>
+    <input
+      id="price"
+      name="price"
+      type="text"
+      placeholder="Price: $"
+      #price
+      [(ngModel)]="createNewPrice"
+    />
+    <input
+      id="rating"
+      name="rating"
+      type="text"
+      placeholder="Rating: out of 6"
+      #rating
+      [(ngModel)]="createNewRating"
+    />
+    <input
+      id="url"
+      name="url"
+      type="text"
+      placeholder="URL: "
+      [(ngModel)]="createNewUrl"
+      #url
+    />
+
+    <button class="edit" (click)="this.createNewProduct()">Save</button>
+  </div>
+
+  <!--CARD ITERATION-->
   <div class="card" *ngFor="let product of products; let i = index">
-    <img
-      src="{{ product.url }}"
-      alt="product image"
-      class="product-image"
-    /><span>Price: ${{ product.price }}</span
-    ><span>Rating: {{ product.rating }} out of 6</span
-    ><button>More info</button>
+    <img src="{{ product.url }}" alt="product image" class="product-image" />
+    <input
+      id="price"
+      name="price"
+      type="text"
+      *ngIf="product.hideMe"
+      placeholder="Price: ${{ product.price }}"
+      #price
+      [(ngModel)]="editPrice"
+    />
+    <input
+      id="rating"
+      name="rating"
+      type="text"
+      *ngIf="product.hideMe"
+      placeholder="Rating: {{ product.rating }} out of 6"
+      #rating
+      [(ngModel)]="editRating"
+    />
+    <input
+      id="url"
+      name="url"
+      type="text"
+      *ngIf="product.hideMe"
+      placeholder="URL: {{ product.url }}"
+      [(ngModel)]="editUrl"
+      #url
+    />
+    <span *ngIf="!product.hideMe">Price: ${{ product.price }}</span>
+    <span *ngIf="!product.hideMe">Rating: {{ product.rating }} out of 6</span>
+    <button
+      class="edit"
+      *ngIf="product.hideMe"
+      (click)="this.saveEdits(product)"
+    >
+      Save
+    </button>
+    <button
+      class="edit"
+      *ngIf="!product.hideMe"
+      (click)="this.showEditFields(product)"
+    >
+      Edit</button
+    ><button class="delete" (click)="this.deleteProduct(product)">
+      Delete
+    </button>
   </div>
 </div>

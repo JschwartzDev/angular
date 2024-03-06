@@ -63,4 +63,46 @@ export class HomeComponent implements OnInit {
       this.fetchProducts();
     }
   }
+
+  editProduct($event: any) {
+    this.requestOptions.params = {
+      id: $event.id,
+      price: $event.price,
+      rating: $event.rating,
+      url: $event.url,
+    };
+    console.log(`request options: ${this.requestOptions.responseType}`);
+
+    this.productsService
+      .editProduct(
+        `${environment.apiUrl}/products`,
+        this.requestOptions.parms,
+        this.requestOptions
+      )
+      .subscribe((data) => {});
+  }
+
+  createProduct($event: any) {
+    this.requestOptions.params = {
+      price: $event.price,
+      rating: $event.rating,
+      url: $event.url,
+    };
+
+    this.productsService
+      .createProduct(
+        `${environment.apiUrl}/products`,
+        this.requestOptions.params,
+        this.requestOptions
+      )
+      .subscribe((data) => {});
+  }
+
+  deleteProduct($event: any) {
+    this.products = this.products.filter((el: any) => el.id !== $event.id);
+    this.requestOptions.params.id = $event.id;
+    this.productsService
+      .deleteProduct(`${environment.apiUrl}/products`, this.requestOptions)
+      .subscribe((data) => {});
+  }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { Options, Products } from '../../types';
+import { Products } from '../../types';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,27 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
   constructor(private apiService: ApiService) {}
-  getProducts = (url: string, options: Options): Observable<Products> => {
+  getProducts = (url: string, options: any): Observable<Products> => {
     return this.apiService.get(url, options);
+  };
+
+  editProduct = (
+    url: string,
+    body: any,
+    options: any
+  ): Observable<Products> => {
+    return this.apiService.put(url, body, options);
+  };
+
+  createProduct = (
+    url: string,
+    body: any,
+    options: any
+  ): Observable<Products> => {
+    return this.apiService.post(url, body, options);
+  };
+
+  deleteProduct = (url: string, options: any): Observable<Products> => {
+    return this.apiService.delete(url, options);
   };
 }
