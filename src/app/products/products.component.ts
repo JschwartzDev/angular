@@ -1,13 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../types';
 
 @Component({
@@ -77,7 +70,6 @@ export class ProductsComponent {
       newProduct.rating !== '' &&
       newProduct.url !== ''
     ) {
-      this.products.pop();
       this.products.unshift(newProduct);
       this.createNewProductEmitter.emit(newProduct);
       this.resetInputFields();

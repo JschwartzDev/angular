@@ -30,6 +30,11 @@ export class HomeComponent implements OnInit {
   }
 
   fetchProducts() {
+    this.requestOptions.params = {
+      pageNum: this.pageNum,
+      perPage: this.perPage,
+    };
+
     this.productsService
       .getProducts(`${environment.apiUrl}/products`, this.requestOptions)
       .subscribe((data: Products) => {
@@ -71,7 +76,6 @@ export class HomeComponent implements OnInit {
       rating: $event.rating,
       url: $event.url,
     };
-    console.log(`request options: ${this.requestOptions.responseType}`);
 
     this.productsService
       .editProduct(

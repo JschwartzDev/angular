@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   flex-wrap: wrap;
-  background-color: #1b9aaa;
+  background-color: var(--wrapper-bg-color);
   padding: 2rem;
 }
 
@@ -13,9 +13,8 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1b9aaa;
-  height: 5vh;
-  padding-bottom: 10vh;
+  background-color: var(--wrapper-bg-color);
+  height: 15vh;
 }
 
 .prev-btn {
@@ -29,6 +28,10 @@ button:hover {
 }
 
 .pagination-button {
-  padding: 0px 20px;
-  background-color: #dddbcb;
+  height: 2rem;
+  width: 7rem;
+  padding: 0.5rem;
+  color: var(--text-color);
+  background-color: var(--button-color-1);
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
 }

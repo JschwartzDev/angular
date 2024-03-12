@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div id="products-wrapper" class="wrapper">
   <div
     class="create-new-product-btn"
     (click)="this.creatingNew = !this.creatingNew"
@@ -32,7 +32,10 @@
       #url
     />
 
-    <button class="edit" (click)="this.createNewProduct()">Save</button>
+    <button class="save" (click)="this.createNewProduct()">Save</button>
+    <button class="delete" (click)="this.creatingNew = !this.creatingNew">
+      Delete
+    </button>
   </div>
 
   <!--CARD ITERATION-->
@@ -68,7 +71,7 @@
     <span *ngIf="!product.hideMe">Price: ${{ product.price }}</span>
     <span *ngIf="!product.hideMe">Rating: {{ product.rating }} out of 6</span>
     <button
-      class="edit"
+      class="save"
       *ngIf="product.hideMe"
       (click)="this.saveEdits(product)"
     >
